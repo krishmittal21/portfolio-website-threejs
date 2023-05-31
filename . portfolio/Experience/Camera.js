@@ -19,10 +19,17 @@ export default class Camera{
         this.scene.add(this.orthographicCamera);
     }
     resize(){
+        {/* updating perspective camera on resize*/ }
         this.perspectiveCamera.aspect = this.sizes.aspect;
+        this.perspectiveCamera.updateProjectionMatrix();
+
         this.orthographicCamera.left = -this.frustumSize*this.sizes.aspect/2;
         this.orthographicCamera.right = this.frustumSize*this.sizes.aspect/2;
         this.orthographicCamera.top = this.frustumSize/2;
         this.orthographicCamera.bottom = -this.frustumSize/2;
     }
+    update(){
+        
+    }
+        
 }
