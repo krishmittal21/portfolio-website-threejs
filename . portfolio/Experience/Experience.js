@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import Sizes from './Utils/Sizes';
 import Camera from './Camera';
+import Renderer from './Renderer';
+import Time from './Utils/Time';
 export default class Experience{
     static instance 
     constructor(canvas){
@@ -10,9 +12,10 @@ export default class Experience{
         Experience.instance = this
         this.canvas = canvas
         this.scene = new THREE.Scene()
+        this.time = new Time()
         this.Sizes = new Sizes()
         this.Camera = new Camera()
-        console.log(this.experience,this.sizes,this.camera,this.canvas);
+        this.Renderer = new Renderer()
 animate();
     }
 }
