@@ -1,4 +1,5 @@
 import Experience from "./Experience";
+import * as THREE from 'three';
 export default class Camera{
     constructor(){
         this.experience = new Experience();
