@@ -9,8 +9,12 @@ export default class Camera{
         this.createOrthographicCamera();
     }
     createPerspectiveCamera(){
-        this.perspectiveCamera = new THREE.PerspectiveCamera(75,this.sizes.width/this.sizes.height,0.1,100);
-        this.perspectiveCamera.position.z = 3;
+        this.perspectiveCamera = new THREE.PerspectiveCamera(35,this.sizes.aspect,0.1,1000);
         this.scene.add(this.perspectiveCamera);
+    };
+    createOrthographicCamera(){
+        this.frustumSize = 5;
+        this.orthographicCamera = new THREE.OrthographicCamera(this.frustumSize*this.sizes.aspect/ -2,this.frustumSize*this.sizes.aspect/2,this.frustumSize/2,this.frustumSize/ -2,0.1,1000);
+        this.scene.add(this.orthographicCamera);
     }
 }
