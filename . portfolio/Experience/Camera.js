@@ -18,4 +18,11 @@ export default class Camera{
         this.orthographicCamera = new THREE.OrthographicCamera(this.frustumSize*this.sizes.aspect/ -2,this.frustumSize*this.sizes.aspect/2,this.frustumSize/2,this.frustumSize/ -2,0.1,1000);
         this.scene.add(this.orthographicCamera);
     }
+    resize(){
+        this.perspectiveCamera.aspect = this.sizes.aspect;
+        this.orthographicCamera.left = -this.frustumSize*this.sizes.aspect/2;
+        this.orthographicCamera.right = this.frustumSize*this.sizes.aspect/2;
+        this.orthographicCamera.top = this.frustumSize/2;
+        this.orthographicCamera.bottom = -this.frustumSize/2;
+    }
 }
