@@ -14,7 +14,7 @@ export default class Experience{
         this.scene = new THREE.Scene();
         this.time = new Time();
         this.sizes = new Sizes();
-        this.Camera = new Camera();
+        this.camera = new Camera();
         this.renderer = new Renderer();
         this.time.on('update',()=>{
             this.update();
