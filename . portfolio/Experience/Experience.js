@@ -4,10 +4,10 @@ import Camera from './Camera.js';
 import Renderer from './Renderer.js';
 import Time from './Utils/Time.js';
 export default class Experience{
-    static instance 
+    static instance;
     constructor(canvas){
         if(Experience.instance){
-            return Experience.instance
+            return Experience.instance;
         }
         Experience.instance = this;
         this.canvas = canvas;
@@ -16,15 +16,15 @@ export default class Experience{
         this.sizes = new Sizes();
         this.camera = new Camera();
         this.renderer = new Renderer();
-        this.time.on('update',()=>{
-            this.update();
+        this.sizes.on('resize',()=>{
+            this.resize();
         });
         this.time.on('update',()=>{
             this.update();
         });
     }
     update(){
-        this.Camera.update()
+        this.camera.update()
         this.renderer.update()
     }
 }

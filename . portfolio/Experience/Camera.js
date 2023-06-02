@@ -23,10 +23,10 @@ export default class Camera{
         this.perspectiveCamera.aspect = this.sizes.aspect;
         this.perspectiveCamera.updateProjectionMatrix();
 
-        this.orthographicCamera.left = -this.frustumSize*this.sizes.aspect/2;
-        this.orthographicCamera.right = this.frustumSize*this.sizes.aspect/2;
-        this.orthographicCamera.top = this.frustumSize/2;
-        this.orthographicCamera.bottom = -this.frustumSize/2;
+        this.orthographicCamera.left =(-this.sizes.aspect * this.frustrum) / 2;
+        this.orthographicCamera.right =(this.sizes.aspect * this.frustrum) / 2;
+        this.orthographicCamera.top = this.frustrum / 2;
+        this.orthographicCamera.bottom = -this.frustrum / 2;
         this.orthographicCamera.updateProjectionMatrix();
     }
     update(){
