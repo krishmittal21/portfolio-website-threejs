@@ -1,4 +1,4 @@
-import EventEmitter from "events"
+import {EventEmitter} from "events"
 import * as THREE from "three"
 export default class Sizes extends EventEmitter{
     constructor(){
