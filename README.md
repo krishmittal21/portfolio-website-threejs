@@ -12,6 +12,7 @@ git clone https://github.com/krishmittal21/portfolio-website-threejs.git
 cd portfolio-website-threejs
 npm install
 Use code with caution. Learn more
+3D model made using blender and ready player me
 Once the dependencies are installed, you can start the development server:
 
 Code snippet
