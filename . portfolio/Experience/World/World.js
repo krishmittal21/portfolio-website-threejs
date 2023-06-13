@@ -2,8 +2,10 @@ import Experience from "../Experience";
 import * as THREE from 'three';
 import Avatar from "./Avatar.js";
 import Environment from "./Environment.js";
-export default class World{
+import EventEmitter from "events";
+export default class World extends EventEmitter{
     constructor(){
+        super();
         this.experience = new Experience();
         this.sizes = this.experience.sizes;
         this.scene=this.experience.scene;
@@ -11,10 +13,9 @@ export default class World{
         this.camera=this.experience.camera;
         this.resources=this.experience.resources;
         this.resources.on('ready',()=>{
-            this.Environment = new Environment();
+            this.environment = new Environment();
             this.avatar = new Avatar();
         });
-        this.avatar= new Avatar();
     }
     setRenderer(){
         
