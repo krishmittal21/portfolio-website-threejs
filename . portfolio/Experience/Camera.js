@@ -20,7 +20,12 @@ export default class Camera{
     };
     createOrthographicCamera(){
         this.orthographicCamera = new THREE.OrthographicCamera(this.frustumSize*-this.sizes.aspect/ 2,this.frustumSize*this.sizes.aspect/2,this.sizes.frustum/2,this.sizes.frustum/ -2,-50,100);
+        this.orthographicCamera.position.y = 5.65;
+        this.orthographicCamera.position.z = 10;
+        this.orthographicCamera.rotation.x = -Math.PI / 6;
         this.scene.add(this.orthographicCamera);
+        const size = 20;
+        const divisions = 20;
         
         
     };
