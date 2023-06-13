@@ -15,6 +15,7 @@ export default class Avatar {
     }
     setModel(){
         this.scene.add(this.actualAvatar);
+        this.actualAvatar.scale.set(5,5,5);
     }
 
     
