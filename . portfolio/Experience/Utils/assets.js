@@ -1,6 +1,6 @@
 export default[
     {
-        name: "me",
+        name: "avatar",
         type:"glbModel",
         path: "/models/avatar.glb",
     },
