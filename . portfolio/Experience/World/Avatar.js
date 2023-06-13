@@ -8,13 +8,13 @@ export default class Avatar {
         this.resources = this.experience.resources;
         this.time = this.experience.time;
         this.avatar = this.resources.items.avatar;
-        this.actualavatar = this.avatar.scene;
+        this.actualAvatar = this.avatar.scene;
         
         this.setModel();
         
     }
     setModel(){
-        this.scene.add(this.actualavatar);
+        this.scene.add(this.actualAvatar);
     }
 
     
