@@ -15,7 +15,8 @@ export default class Avatar {
     }
     setModel(){
         this.scene.add(this.actualAvatar);
-        this.actualAvatar.scale.set(5,5,5);
+        this.actualAvatar.scale.set(10,10,10);
+        this.actualAvatar.position.set(0,-9,0);
     }
 
     
