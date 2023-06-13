@@ -1,6 +1,7 @@
 import Experience from "../Experience";
 import * as THREE from 'three';
 import Avatar from "./Avatar.js";
+import Environment from "./Environment.js";
 export default class World{
     constructor(){
         this.experience = new Experience();
@@ -10,8 +11,8 @@ export default class World{
         this.camera=this.experience.camera;
         this.resources=this.experience.resources;
         this.resources.on('ready',()=>{
+            this.Environment = new Environment();
             this.avatar = new Avatar();
-            console.log("avatar");
         });
         this.avatar= new Avatar();
     }
