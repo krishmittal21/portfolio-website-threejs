@@ -20,14 +20,6 @@ npm run dev
 Use code with caution. Learn more
 The website will be available at http://localhost:8080.
 
-Features
-The website features the following:
-
-A homepage with a brief introduction about me and my work
-A gallery of my 3D projects
-A blog where I write about my experiences with web development, 3D graphics, and animation
-Contributions
-I welcome contributions to this project. If you have any ideas for features or improvements, please feel free to open an issue or submit a pull request.
 
 License
 This project is licensed under the MIT License.
