@@ -26,8 +26,8 @@ export default class Avatar {
             { position: new THREE.Vector3(10, 10,2), text: "Text for point 1" },
             { position: new THREE.Vector3(0, 0, 2), text: "Text for point 2" },
             { position: new THREE.Vector3(-5, 2, 2), text: "Text for point 3" },
-            { position: new THREE.Vector3(5, 2, 2), text: "Text for point 4" },
-            { position: new THREE.Vector3(-5, -2,2), text: "Text for point 5" },
+            { position: new THREE.Vector3(5, 2, 3), text: "Text for point 4" },
+            { position: new THREE.Vector3(-5, -2, -3), text: "Text for point 5" },
             { position: new THREE.Vector3(-2, -8, 2), text: "Text for point 6" },
             { position: new THREE.Vector3(2, -8, 2), text: "Text for point 7" },
         ];
