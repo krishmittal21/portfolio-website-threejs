@@ -1,23 +1,23 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
 
-export default class Avatar {
+export default class walle {
     constructor() {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
         this.time = this.experience.time;
-        this.avatar = this.resources.items.avatar;
-        this.actualAvatar = this.avatar.scene;
+        this.walle = this.resources.items.walle;
+        this.actualwalle = this.walle.scene;
         
         this.setModel();
         
     }
     setModel(){
-        this.scene.add(this.actualAvatar);
-        this.actualAvatar.scale.set(10,10,10);
-        this.actualAvatar.position.set(0,-9,0);
-        
+        this.scene.add(this.actualwalle);
+        this.actualwalle.scale.set(5,5,5);
+        this.actualwalle.position.set(0,-8,0);
+        this.actualwalle.rotation.y = Math.PI/2;
     }
 
     

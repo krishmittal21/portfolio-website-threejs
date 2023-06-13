@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import Avatar from "./Avatar.js";
 import Environment from "./Environment.js";
 import EventEmitter from "events";
+import walle from "./walle.js";
 export default class World extends EventEmitter{
     constructor(){
         super();
@@ -15,6 +16,7 @@ export default class World extends EventEmitter{
         this.resources.on('ready',()=>{
             this.environment = new Environment();
             this.avatar = new Avatar();
+            //this.walle = new walle();
         });
     }
     setRenderer(){
