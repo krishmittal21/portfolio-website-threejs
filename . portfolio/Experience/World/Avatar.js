@@ -12,7 +12,8 @@ export default class Avatar {
         this.clickablePoints = [];
         this.setModel();
         this.createClickablePoints();
-        this.scene.addEventListener("click", this.onClick.bind(this));
+        this.renderer = this.experience.renderer;
+        this.renderer.domElement.addEventListener("click", this.onClick.bind(this));
         this.targetPoint = null;
         this.camera=this.experience.camera;
         this.lerp = {  
@@ -60,12 +61,16 @@ export default class Avatar {
         
             holeMesh.userData = { text: point.text };
         
+            
             holeMesh.addEventListener("mouseenter", () => {
-            this.experience.canvas.style.cursor = "pointer";
+                this.experience.canvas.style.cursor = "pointer";
             });
-    
             holeMesh.addEventListener("mouseleave", () => {
-            this.experience.canvas.style.cursor = "auto";
+                this.experience.canvas.style.cursor = "auto";
+            });
+            holeMesh.addEventListener("click", () => {
+                this.targetPoint = holeMesh;
+                this.onSeparateButtonPress();
             });
             this.clickablePoints.push(holeMesh);
         });
@@ -73,24 +78,36 @@ export default class Avatar {
         
         onClick(event) {
             // Get the clicked object
-            const clickedObject = event.intersections[0].object;
-        
-            if (clickedObject.type === "Mesh") {
-            // Check if the clicked object is one of the clickable points
-            const clickablePoint = this.clickablePoints.find(
-                (point) => point.position.equals(clickedObject.position)
-            );
-        
-            if (clickablePoint) {
-                this.targetPoint = clickablePoint;
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            raycaster.setFromCamera(mouse, this.camera);
+            const intersects = raycaster.intersectObjects(this.scene.children, true);
+            if (intersects.length>0){
+                const clickedObject = event.intersections[0].object;
+                if (clickedObject.type === "Mesh") {
+                    // Check if the clicked object is one of the clickable points
+                        const clickablePoint = this.clickablePoints.find(
+                            (point) => point.position.equals(clickedObject.position)
+                        );
+                
+                        if (clickablePoint) {
+                            this.targetPoint = clickablePoint;
+                            this.onSeparateButtonPress();
+                        }
+                    }
             }
-            }
+            
+        
+            
         }
         onSeparateButtonPress() {
             if (this.targetPoint) {
                 // Rotate and zoom to the clicked point
                 const targetPosition = this.targetPoint.position.clone();
                 const targetDistance = 15;
+                const targetPositionWithDistance = targetPosition.clone().add(new THREE.Vector3(0, 0, targetDistance));
                 // Animate the camera position and look at the clicked point
                 gsap.to(this.camera.position, {
                     x: targetPosition.x,
@@ -99,6 +116,13 @@ export default class Avatar {
                     duration: 1,
                     ease: "power2.out",
                 });
+                gsap.to(this.camera.lookAt,{
+                    x: targetPosition.x,
+                    y: targetPosition.y,
+                    z: targetPosition.z,
+                    duration: 1,
+                    ease: "power2.out",
+                })
                 this.camera.lookAt(targetPosition);
             }
             }
