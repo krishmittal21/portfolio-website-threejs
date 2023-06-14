@@ -23,13 +23,13 @@ export default class Avatar {
     }
     createClickablePoints() {
         const points = [
-            { position: new THREE.Vector3(10, 10,2), text: "Text for point 1" },
-            { position: new THREE.Vector3(0, 0, 2), text: "Text for point 2" },
-            { position: new THREE.Vector3(-5, 2, 2), text: "Text for point 3" },
-            { position: new THREE.Vector3(5, 2, 3), text: "Text for point 4" },
-            { position: new THREE.Vector3(-5, -2, -3), text: "Text for point 5" },
-            { position: new THREE.Vector3(-2, -8, 2), text: "Text for point 6" },
-            { position: new THREE.Vector3(2, -8, 2), text: "Text for point 7" },
+            { position: new THREE.Vector3(0, 8.5,1.5), text: "1" },
+            { position: new THREE.Vector3(0, 2, 1.5), text: "2" },
+            { position: new THREE.Vector3(-4.7, 1, 1.5), text: "3" },
+            { position: new THREE.Vector3(4.7, 1, 1.5), text: "4" },
+            { position: new THREE.Vector3(0, 2, -1.5), text: "5" },
+            { position: new THREE.Vector3(1.5, -8.5, 2.5), text: "6" },
+            { position: new THREE.Vector3(-1.5, -8.5, 2.5), text: "7" },
         ];
     
         const holeRadius = 0.2;
