@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
-
+import { GSAP } from "gsap";
 export default class Avatar {
     constructor() {
         this.experience = new Experience();
@@ -13,6 +13,14 @@ export default class Avatar {
         this.setModel();
         this.createClickablePoints();
         this.scene.addEventListener("click", this.onClick.bind(this));
+        this.targetPoint = null;
+        this.camera=this.experience.camera;
+        this.lerp = {  
+            current: 0,
+            target: 0,
+            ease: 0.1,
+        };
+        this.mixer = new THREE.AnimationMixer(this.actualAvatar);
         
     }
     setModel(){
@@ -59,6 +67,7 @@ export default class Avatar {
             holeMesh.addEventListener("mouseleave", () => {
             this.experience.canvas.style.cursor = "auto";
             });
+            this.clickablePoints.push(holeMesh);
         });
         }
         
@@ -73,12 +82,26 @@ export default class Avatar {
             );
         
             if (clickablePoint) {
-                // Rotate and zoom to the clicked point
-                // Apply animation and display the associated text
-                console.log(clickablePoint.text);
+                this.targetPoint = clickablePoint;
             }
             }
         }
+        onSeparateButtonPress() {
+            if (this.targetPoint) {
+                // Rotate and zoom to the clicked point
+                const targetPosition = this.targetPoint.position.clone();
+                const targetDistance = 15;
+                // Animate the camera position and look at the clicked point
+                GSAP.to(this.camera.position, {
+                    x: targetPosition.x,
+                    y: targetPosition.y,
+                    z: targetPosition.z + targetDistance,
+                    duration: 1,
+                    ease: "power2.out",
+                });
+                this.camera.lookAt(targetPosition);
+            }
+            }
 
     
 
@@ -94,7 +117,7 @@ export default class Avatar {
             this.lerp.ease
         );
 
-        this.actualRoom.rotation.y = this.lerp.current;
+        this.actualAvatar.rotation.y = this.lerp.current;
 
         this.mixer.update(this.time.delta * 0.0009);
     }
