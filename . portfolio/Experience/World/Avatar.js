@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
-import { GSAP } from "gsap";
+import { gsap } from "gsap/dist/gsap";
 export default class Avatar {
     constructor() {
         this.experience = new Experience();
@@ -92,7 +92,7 @@ export default class Avatar {
                 const targetPosition = this.targetPoint.position.clone();
                 const targetDistance = 15;
                 // Animate the camera position and look at the clicked point
-                GSAP.to(this.camera.position, {
+                gsap.to(this.camera.position, {
                     x: targetPosition.x,
                     y: targetPosition.y,
                     z: targetPosition.z + targetDistance,
