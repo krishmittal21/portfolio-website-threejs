@@ -2,7 +2,7 @@ export default[
     {
         name: "avatar",
         type:"glbModel",
-        path: "/models/avatar.glb",
+        path: "/models/sithship.glb",
     },
     {
         name:"walle",
