@@ -26,7 +26,17 @@ export default class World extends EventEmitter{
         
     }
     update(){
+    
+        // Call the update method of the Avatar class here
+        this.avatar.update();
+    
+        // Render the scene
+        // ...
+    
+        requestAnimationFrame(this.render.bind(this));
+    }
+    render() {
         
     }
+    }
         
-}

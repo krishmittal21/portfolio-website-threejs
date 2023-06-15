@@ -7,6 +7,7 @@ export default class Camera{
             this.sizes = this.experience.sizes;
             this.scene=this.experience.scene;
             this.canvas = this.experience.canvas;
+            this.frustumSize = 10;
             this.createPerspectiveCamera();
             this.createOrthographicCamera();
             this.setOrbitControls();
@@ -24,6 +25,7 @@ export default class Camera{
         this.orthographicCamera.position.z = 10;
         this.orthographicCamera.rotation.x = -Math.PI / 6;
         this.scene.add(this.orthographicCamera);
+        
         
         
     };
