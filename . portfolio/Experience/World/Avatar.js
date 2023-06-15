@@ -85,7 +85,8 @@ export default class Avatar {
             raycaster.setFromCamera(mouse, this.camera);
             const intersects = raycaster.intersectObjects(this.scene.children, true);
             if (intersects.length>0){
-                const clickedObject = event.intersections[0].object;
+                const clickedObject = intersects[0].object;
+                
                 if (clickedObject.type === "Mesh") {
                     // Check if the clicked object is one of the clickable points
                         const clickablePoint = this.clickablePoints.find(

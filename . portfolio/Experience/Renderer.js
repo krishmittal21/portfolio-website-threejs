@@ -30,5 +30,8 @@ export default class Renderer{
     update(){
         this.renderer.render(this.scene,this.camera.perspectiveCamera);
     }
+    get domElement(){   
+        return this.renderer.domElement;
+    }
         
 }
