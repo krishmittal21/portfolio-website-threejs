@@ -24,12 +24,6 @@ export default class Camera{
         this.orthographicCamera.position.z = 10;
         this.orthographicCamera.rotation.x = -Math.PI / 6;
         this.scene.add(this.orthographicCamera);
-        const size = 20;
-        const divisions = 20;
-        const gridHelper = new THREE.GridHelper( size, divisions );
-        this.scene.add( gridHelper );
-        const axesHelper = new THREE.AxesHelper( 5 );
-        this.scene.add( axesHelper );
         
         
     };
