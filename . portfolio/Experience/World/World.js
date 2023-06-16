@@ -13,6 +13,7 @@ export default class World extends EventEmitter{
         this.canvas = this.experience.canvas;
         this.camera=this.experience.camera;
         this.resources=this.experience.resources;
+        this.renderer=this.experience.renderer;
         this.resources.on('ready',()=>{
             this.environment = new Environment();
             this.avatar = new Avatar();
@@ -27,13 +28,7 @@ export default class World extends EventEmitter{
     }
     update(){
     
-        // Call the update method of the Avatar class here
-        this.avatar.update();
-    
-        // Render the scene
-        // ...
-    
-        requestAnimationFrame(this.render.bind(this));
+        
     }
     render() {
         
