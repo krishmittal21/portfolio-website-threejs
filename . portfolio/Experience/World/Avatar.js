@@ -1,5 +1,6 @@
 import Experience from "../Experience.js";
 import KeyDisplay from "../Utils/KeyDisplay.js";
+import {CharacterControls, DIRECTIONS} from "../Utils/characterControls.js";
 export default class Avatar {
     constructor() {
         this.experience = new Experience();
@@ -10,7 +11,7 @@ export default class Avatar {
         this.actualAvatar = this.avatar.scene;
         this.setModel();
         this.addKeyboardListener();
-                
+        this.addCharacterControls();
     }
     setModel(){
         this.scene.add(this.actualAvatar);
@@ -23,14 +24,23 @@ export default class Avatar {
         const keyDisplayQueue= new KeyDisplay();
         document.addEventListener('keydown', (event) => {
             keyDisplayQueue.down(event.key)
-            (keysPressed )[event.key.toLowerCase()] = true;
+            keysPressed[event.key.toLowerCase()] = true;
         },false);
         document.addEventListener('keyup', (event) => {
             keyDisplayQueue.up(event.key)
-            (keysPressed )[event.key.toLowerCase()] = false;
+            keysPressed[event.key.toLowerCase()] = false;
         },false);
+        this.keysPressed = keysPressed;
     }
-    resize() {}
+    addCharacterControls(){
+        const controls = new CharacterControls(this.actualAvatar,this.experience.camera.controls,this.experience.camera.perspectiveCamera);
+        this.time.on("tick", () => {
+            controls.update(this.time.delta,keyPressed);
+    });
+    }
+    resize() {
+        
+    }
 
     update() {
     }
